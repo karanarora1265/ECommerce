@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_070113) do
+ActiveRecord::Schema.define(version: 2021_02_22_135603) do
+
+  create_table "brand_manages", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "brand_id", null: false
+    t.integer "admin_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_brand_manages_on_brand_id"
+    t.index ["user_id"], name: "index_brand_manages_on_user_id"
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.integer "user_id", null: false
+    t.text "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_brands_on_company_id"
+    t.index ["user_id"], name: "index_brands_on_user_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.text "name"
@@ -34,5 +54,9 @@ ActiveRecord::Schema.define(version: 2021_02_22_070113) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "brand_manages", "brands"
+  add_foreign_key "brand_manages", "users"
+  add_foreign_key "brands", "companies"
+  add_foreign_key "brands", "users"
   add_foreign_key "companies", "users"
 end

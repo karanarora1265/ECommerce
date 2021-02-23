@@ -27,4 +27,8 @@ class ApplicationController < ActionController::API
   def signed_in?
     @current_user_id.present?
   end
+
+  def is_admin?
+    @current_user.is_a? Admin
+  end
 end
