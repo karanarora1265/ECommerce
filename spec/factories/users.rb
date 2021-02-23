@@ -15,4 +15,9 @@ FactoryBot.define do
     user_id {}
     company_id {}
   end
+  factory :brand_manager do
+	user_id {}
+	admin_id {}
+	brand_id {}
+  end
 end

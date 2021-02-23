@@ -31,4 +31,8 @@ class ApplicationController < ActionController::API
   def is_admin?
     @current_user.is_a? Admin
   end
+
+  def is_contributor?
+    @current_user.is_a? Contributor
+  end
 end
