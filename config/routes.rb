@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :brands
   resources :companies
+  resources :brand_managers
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -3,6 +3,7 @@ FactoryBot.define do
     email { "contributor@test.com" }
     password  { "password" }
     type { 'Contributor' }
+    created_by_id { }
   end
 
   factory :company do
@@ -12,5 +13,6 @@ FactoryBot.define do
   factory :brand do
     name { "brand1" }
     user_id {}
+    company_id {}
   end
 end

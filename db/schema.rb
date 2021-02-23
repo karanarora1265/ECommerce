@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2021_02_22_135603) do
 
-  create_table "brand_manages", force: :cascade do |t|
+  create_table "brand_managers", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "brand_id", null: false
     t.integer "admin_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["brand_id"], name: "index_brand_manages_on_brand_id"
-    t.index ["user_id"], name: "index_brand_manages_on_user_id"
+    t.index ["brand_id"], name: "index_brand_managers_on_brand_id"
+    t.index ["user_id"], name: "index_brand_managers_on_user_id"
   end
 
   create_table "brands", force: :cascade do |t|
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_135603) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "created_by_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "name"
@@ -54,8 +55,8 @@ ActiveRecord::Schema.define(version: 2021_02_22_135603) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "brand_manages", "brands"
-  add_foreign_key "brand_manages", "users"
+  add_foreign_key "brand_managers", "brands"
+  add_foreign_key "brand_managers", "users"
   add_foreign_key "brands", "companies"
   add_foreign_key "brands", "users"
   add_foreign_key "companies", "users"
